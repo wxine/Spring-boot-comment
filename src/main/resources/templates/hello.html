@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>Insert title here</title>
+<style type="text/css">
+a{
+text-decoration:none;
+}
+.list{
+margin-top:30px;
+}
+</style>
+<script th:src="@{/js/jquery-3.0.0.min.js}"></script>
+</head>
+<body>
+	<div>
+		<form th:action="@{/add}" method="post">
+			<label> <input type="text" name="content" id="content" />
+			</label> <input type="submit" value="add"/>
+		</form>
+	</div>
+	
+	<h3>评论列表:</h3>
+	<span th:each="post:${posts}">
+		<div class="list" id="edit_line">
+		<p th:id="${post.id}" th:text="${post.content}" class="edit_input"></p>
+		<a th:href="@{/delete/__${post.id}__}">删除</a>
+		<button class="edit" >编辑</button>
+		<hr/>
+		</div>
+	</span>
+</body>
+<script th:src="@{/js/1.js}"></script>
+</html>
